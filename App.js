@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 import PurchasesListScreen from './screens/PurchasesListScreen';
 import AddPurchaseScreen from './screens/AddPurchaseScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 import Theme from './theme/Theme';
 
@@ -14,7 +15,10 @@ const RootStack = StackNavigator(
         },
         AddPurchase: {
             screen: AddPurchaseScreen,
-        }
+        },
+        Settings: {
+            screen: SettingsScreen,
+        },
     },
     {
         initialRouteName: 'PurchasesList',

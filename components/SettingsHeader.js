@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
-export default class ToAddPurchaseButton extends React.Component {
+export default class SettingsHeader extends React.Component {
     render() {
         return (
             <Toolbar
                 leftElement='close'
-                centerElement='Добавление покупки'
+                centerElement='Настройки'
                 rightElement='check'
                 onLeftElementPress={() => {this.props.onClose()}}
-                onRightElementPress={() => {this.props.onCreatePurchasePress()}}
+                onRightElementPress={() => {this.props.onSaveSettings()}}
                 style={styles}
             />
         );

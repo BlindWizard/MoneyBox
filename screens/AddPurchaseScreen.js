@@ -3,32 +3,22 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import AddPurchaseHeader from '../components/AddPurchaseHeader';
 import AddPurchaseForm from '../components/AddPurchaseForm';
-import PurchasesStore from  '../stores/PurchasesStore';
-import Purchase from '../models/Purchase';
 
 export  default class AddPurchaseScreen extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            purchaseName:  null,
-            purchasePrice: null,
-        }
-    }
-
-    addPurchase() {
-        let purchasesStore = new PurchasesStore();
-        let purchase       = new Purchase(this.state.purchaseName, this.state.purchasePrice);
-
-        purchasesStore.addPurchase(purchase).then(() => { this.props.navigation.navigate('PurchasesList') });
+    submitForm() {
+        this.purchaseForm.addPurchase();
     }
 
     render() {
         return (
             <View style={styles.layout}>
-                <AddPurchaseHeader onCreatePurchasePress={() => {this.addPurchase()}} />
+                <AddPurchaseHeader
+                    onClose={() => {this.props.navigation.navigate('PurchasesList')}}
+                    onCreatePurchasePress={() => {this.submitForm()}}
+                />
                 <AddPurchaseForm
-                    onChangeName={(name) => this.setState({purchaseName: name})}
-                    onChangePrice={(price) => this.setState({purchasePrice: price})}
+                    ref={form => { this.purchaseForm = form }}
+                    onSubmit={() => {this.props.navigation.navigate('PurchasesList')}}
                 />
             </View>
         )

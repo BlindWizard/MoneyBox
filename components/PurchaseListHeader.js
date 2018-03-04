@@ -6,12 +6,13 @@ export default class PurchaseListHeader extends React.Component {
     render() {
         return (
             <Toolbar
-                leftElement="menu"
-                centerElement="Покупки сегодня"
+                leftElement='menu'
+                centerElement='Покупки сегодня'
                 searchable={{
                     autoFocus: true,
                     placeholder: 'Поиск...',
                 }}
+                onLeftElementPress={() => {this.props.onMenuPress()}}
                 style={styles}
             />
         );
