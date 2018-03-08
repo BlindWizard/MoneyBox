@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
-export default class SettingsHeader extends React.Component {
+export class SettingsHeader extends React.Component {
     render() {
         return (
             <Toolbar

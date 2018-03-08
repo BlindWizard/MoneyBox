@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
 
-import PurchasesListScreen from './screens/PurchasesListScreen';
-import AddPurchaseScreen from './screens/AddPurchaseScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import { PurchasesListScreen } from './screens/PurchasesListScreen';
+import { AddPurchaseScreen } from './screens/AddPurchaseScreen';
+import { SettingsScreen } from './screens/SettingsScreen';
 
 import Theme from './theme/Theme';
 

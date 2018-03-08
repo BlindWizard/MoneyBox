@@ -1,8 +1,12 @@
-import { AsyncStorage } from 'react-native';
+import { AbstractStore } from './AbstractStore';
 
 let currency = null;
 
-export default class CurrencyStore {
+export class CurrencyStore extends AbstractStore {
+    constructor() {
+        super('Currency');
+    }
+
     getCurrencies() {
         return [
             {
@@ -27,12 +31,9 @@ export default class CurrencyStore {
     }
 
     async getCurrency() {
-        currency = await AsyncStorage.getItem('currency');
+        currency = await this.getOne();
         if (null === currency) {
             currency = this.getDefault()
-        }
-        else {
-            currency = JSON.parse(currency);
         }
 
         return currency;
@@ -43,6 +44,6 @@ export default class CurrencyStore {
             currency = await this.getDefault();
         }
 
-        return AsyncStorage.setItem('currency', JSON.stringify(currency));
+        return this.set(currency);
     }
 }

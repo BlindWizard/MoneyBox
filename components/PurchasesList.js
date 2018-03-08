@@ -3,15 +3,14 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-material-ui';
 import Moment from 'moment';
 
-import PurchasesStore from  '../stores/PurchasesStore';
-import CurrencyStore from '../stores/CurrencyStore';
+import { StoreFactory } from  '../stores/StoreFactory';
 
-export default class PurchasesList extends React.Component {
+export class PurchasesList extends React.Component {
     constructor() {
         super();
 
-        this.purchasesStore = new PurchasesStore();
-        this.currencyStore = new CurrencyStore();
+        this.purchasesStore = StoreFactory.getInstance('Purchase');
+        this.currencyStore  = StoreFactory.getInstance('Currency');
         this.state = {
             purchases: [],
             currencyIcon: this.currencyStore.getDefault().icon,
@@ -19,8 +18,8 @@ export default class PurchasesList extends React.Component {
     }
 
     componentDidMount() {
-        this.purchasesStore.getPurchases().then((purchases) => {
-             this.setState({purchases});
+        this.purchasesStore.getAll().then((purchases) => {
+            this.setState({purchases});
         });
 
         this.currencyStore.getCurrency().then((currency) => {
@@ -30,9 +29,9 @@ export default class PurchasesList extends React.Component {
         })
     }
 
-    deletePurchase(key) {
-        this.purchasesStore.deletePurchase(key).then(() => {
-            this.purchasesStore.getPurchases().then((purchases) => {
+    deletePurchase(id) {
+        this.purchasesStore.remove(id).then(() => {
+            this.purchasesStore.getAll().then((purchases) => {
                 this.setState({purchases});
             });
         });
@@ -57,7 +56,7 @@ export default class PurchasesList extends React.Component {
                                             </View>
                                         }
                                         rightElement='delete'
-                                        onRightElementPress={() => {this.deletePurchase(i)}}
+                                        onRightElementPress={() => {this.deletePurchase(purchase.id)}}
                                         divider
                                     />
                                 ))

@@ -2,12 +2,12 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
-import CurrencySettingStore from '../stores/CurrencyStore';
+import { StoreFactory } from '../stores/StoreFactory';
 
-export default class SettingsForm extends React.Component {
+export class SettingsForm extends React.Component {
     constructor() {
         super();
-        this.currencyStore = new CurrencySettingStore();
+        this.currencyStore = new StoreFactory.getInstance('Currency');
         this.state = {
             currencyCode:  this.currencyStore.getDefault().code
         }

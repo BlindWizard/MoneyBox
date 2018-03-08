@@ -2,10 +2,10 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 
-import PurchasesStore from  '../stores/PurchasesStore';
-import Purchase from '../models/Purchase';
+import { StoreFactory } from  '../stores/StoreFactory';
+import { Purchase } from '../models/Purchase';
 
-export default class AddPurchaseForm extends React.Component {
+export class AddPurchaseForm extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -42,10 +42,10 @@ export default class AddPurchaseForm extends React.Component {
             return;
         }
 
-        let purchasesStore = new PurchasesStore();
-        let purchase       = new Purchase(this.state.purchaseName, this.state.purchasePrice);
+        let store    = StoreFactory.getInstance('Purchase');
+        let purchase = new Purchase(null, this.state.purchaseName, this.state.purchasePrice);
 
-        purchasesStore.addPurchase(purchase).then(() => {this.props.onSubmit()});
+        store.add(purchase).then(() => {this.props.onSubmit()});
     }
 
     render() {

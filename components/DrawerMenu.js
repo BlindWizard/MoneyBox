@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Easing } from 'react-native';
 import Drawer from 'react-native-drawer-menu';
 
-import DrawerMenuContent from './DrawerMenuContent';
+import { DrawerMenuContent } from './DrawerMenuContent';
 
-export  default class DrawerMenu extends React.Component {
+export class DrawerMenu extends React.Component {
+    openDrawer() {
+        this.drawer.openDrawer();
+    }
+
     render() {
-        let content = this.props.content;
         return (
             <Drawer
-                drawerWidth={300}
+                ref={drawer => {this.drawer = drawer}}
+                drawerWidth={275}
                 drawerContent={<DrawerMenuContent />}
                 type={Drawer.types.Default}
                 drawerPosition={Drawer.positions.Left}
+                easingFunc={Easing.ease}
+                style={styles.layout}
             >
-                {content}
+                {this.props.content}
             </Drawer>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    layout: {
+        flex:            1,
+        paddingTop:      20,
+        backgroundColor: '#fff',
+    },
+});

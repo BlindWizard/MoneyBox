@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import AddPurchaseHeader from '../components/AddPurchaseHeader';
-import AddPurchaseForm from '../components/AddPurchaseForm';
+import { AddPurchaseHeader } from '../components/AddPurchaseHeader';
+import { AddPurchaseForm } from '../components/AddPurchaseForm';
 
-export  default class AddPurchaseScreen extends React.Component {
+export class AddPurchaseScreen extends React.Component {
     submitForm() {
         this.purchaseForm.addPurchase();
     }
@@ -17,7 +17,7 @@ export  default class AddPurchaseScreen extends React.Component {
                     onCreatePurchasePress={() => {this.submitForm()}}
                 />
                 <AddPurchaseForm
-                    ref={form => { this.purchaseForm = form }}
+                    ref={form => {this.purchaseForm = form }}
                     onSubmit={() => {this.props.navigation.navigate('PurchasesList')}}
                 />
             </View>
