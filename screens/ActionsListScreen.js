@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { DrawerMenu } from '../components/DrawerMenu';
-import { PurchaseListHeader } from '../components/PurchaseListHeader';
-import { PurchasesList } from '../components/PurchasesList';
-import { ToAddPurchaseButton } from '../components/ToAddPurchaseButton';
+import { ActionsListHeader } from '../components/ActionsListHeader';
+import { ActionsList } from '../components/ActionsList';
+import { ToAddActionButton } from '../components/ToAddActionButton';
 
-export class PurchasesListScreen extends React.Component {
+export class ActionsListScreen extends React.Component {
     render() {
         return (
             <DrawerMenu
@@ -14,10 +14,10 @@ export class PurchasesListScreen extends React.Component {
                 content={
                     <View style={styles.layout}>
                         <View>
-                            <PurchaseListHeader onMenuPress={() => {this.drawer.openDrawer()}} />
-                            <PurchasesList />
+                            <ActionsListHeader onMenuPress={() => {this.drawer.openDrawer()}} />
+                            <ActionsList />
                         </View>
-                        <ToAddPurchaseButton onPress={() => {this.props.navigation.navigate('AddPurchase')}} />
+                        <ToAddActionButton onPress={() => {this.props.navigation.navigate('AddAction')}} />
                     </View>
                 }
             />

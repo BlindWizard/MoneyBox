@@ -9,12 +9,12 @@ export class SettingsScreen extends React.Component {
         return (
             <View style={styles.layout}>
                 <SettingsHeader
-                    onClose={() => {this.props.navigation.navigate('PurchasesList')}}
+                    onClose={() => {this.props.navigation.navigate('ActionsList')}}
                     onSaveSettings={() => {this.settingsForm.saveSettings()}}
                 />
                 <SettingsForm
                     ref={form => {this.settingsForm = form}}
-                    onSubmit={() => {this.props.navigation.navigate('PurchasesList')}}
+                    onSubmit={() => {this.props.navigation.navigate('ActionsList')}}
                 />
             </View>
         )

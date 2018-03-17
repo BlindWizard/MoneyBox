@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
-export class PurchaseListHeader extends React.Component {
+export class ActionsListHeader extends React.Component {
     render() {
         return (
             <Toolbar

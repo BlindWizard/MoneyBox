@@ -1,11 +1,11 @@
-import { PurchasesStore } from './PurchasesStore';
+import { ActionsStore } from './ActionsStore';
 import { CurrencyStore } from './CurrencyStore';
 
 export class StoreFactory {
     static getInstance(itemName) {
         switch (itemName) {
-            case 'Purchase':
-                return new PurchasesStore();
+            case 'Action':
+                return new ActionsStore();
                 break;
             case 'Currency':
                 return new CurrencyStore();

@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
 
-import { PurchasesListScreen } from './screens/PurchasesListScreen';
-import { AddPurchaseScreen } from './screens/AddPurchaseScreen';
+import { ActionsListScreen } from './screens/ActionsListScreen';
+import { AddActionScreen } from './screens/AddActionScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 
 import Theme from './theme/Theme';
 
 const RootStack = StackNavigator(
     {
-        PurchasesList: {
-            screen: PurchasesListScreen,
+        ActionsList: {
+            screen: ActionsListScreen,
         },
-        AddPurchase: {
-            screen: AddPurchaseScreen,
+        AddAction: {
+            screen: AddActionScreen,
         },
         Settings: {
             screen: SettingsScreen,
         },
     },
     {
-        initialRouteName: 'PurchasesList',
+        initialRouteName: 'ActionsList',
         headerMode:       'none',
     }
 );

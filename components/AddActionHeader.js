@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
-export class AddPurchaseHeader extends React.Component {
+export class AddActionHeader extends React.Component {
     render() {
         return (
             <Toolbar
@@ -10,7 +10,7 @@ export class AddPurchaseHeader extends React.Component {
                 centerElement='Добавление покупки'
                 rightElement='check'
                 onLeftElementPress={() => {this.props.onClose()}}
-                onRightElementPress={() => {this.props.onCreatePurchasePress()}}
+                onRightElementPress={() => {this.props.onCreateActionPress()}}
                 style={styles}
             />
         );

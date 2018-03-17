@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Avatar, Drawer } from 'react-native-material-ui';
+import { Avatar, Drawer} from 'react-native-material-ui';
 
 export class DrawerMenuContent extends React.Component {
+    onClose() {
+        this.props.onClose();
+    }
+
     render() {
         return (
             <View style={styles.layout}>
@@ -13,26 +17,23 @@ export class DrawerMenuContent extends React.Component {
                             footer={{
                                 dense: true,
                                 centerElement: {
-                                    primaryText: 'Reservio',
-                                    secondaryText: 'business@email.com',
+                                    primaryText: 'Копилка',
                                 },
-                                rightElement: 'arrow-back',
                             }}
                         />
                     </Drawer.Header>
                     <Drawer.Section
                         divider
                         items={[
-                            { icon: 'bookmark-border', value: 'Notifications' },
-                            { icon: 'today', value: 'Calendar', active: true },
-                            { icon: 'people', value: 'Clients' },
+                            {icon: 'bookmark-border', value: 'Кошельки'},
+                            {icon: 'today', value: 'Действия'},
                         ]}
                     />
                     <Drawer.Section
                         title="Приложение"
                         items={[
-                            { icon: 'settings', value: 'Настройки' },
-                            { icon: 'info', value: 'О приложении' },
+                            {icon: 'settings', value: 'Настройки'},
+                            {icon: 'info', value: 'О приложении'},
                         ]}
                     />
                 </Drawer>

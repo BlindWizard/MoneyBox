@@ -5,21 +5,21 @@ import Moment from 'moment';
 
 import { StoreFactory } from  '../stores/StoreFactory';
 
-export class PurchasesList extends React.Component {
+export class ActionsList extends React.Component {
     constructor() {
         super();
 
-        this.purchasesStore = StoreFactory.getInstance('Purchase');
+        this.actionsStore = StoreFactory.getInstance('Action');
         this.currencyStore  = StoreFactory.getInstance('Currency');
         this.state = {
-            purchases: [],
+            actions: [],
             currencyIcon: this.currencyStore.getDefault().icon,
         };
     }
 
     componentDidMount() {
-        this.purchasesStore.getAll().then((purchases) => {
-            this.setState({purchases});
+        this.actionsStore.getAll().then((actions) => {
+            this.setState({actions});
         });
 
         this.currencyStore.getCurrency().then((currency) => {
@@ -29,10 +29,10 @@ export class PurchasesList extends React.Component {
         })
     }
 
-    deletePurchase(id) {
-        this.purchasesStore.remove(id).then(() => {
-            this.purchasesStore.getAll().then((purchases) => {
-                this.setState({purchases});
+    deleteAction(id) {
+        this.actionsStore.remove(id).then(() => {
+            this.actionsStore.getAll().then((actions) => {
+                this.setState({actions});
             });
         });
     }
@@ -41,22 +41,22 @@ export class PurchasesList extends React.Component {
         return (
             <View>
                 {
-                    (0 !== this.state.purchases.length)
+                    (0 !== this.state.actions.length)
                     ?
                         <ScrollView>
                             {
-                                this.state.purchases.map((purchase, i) => (
+                                this.state.actions.map((action, i) => (
                                     <ListItem
                                         key={i}
                                         centerElement={
                                             <View style={styles.row}>
-                                                <Text>{Moment(purchase.createdAt).format('HH:mm')}</Text>
-                                                <Text>{purchase.name}</Text>
-                                                <Text>{purchase.price} {this.state.currencyIcon}</Text>
+                                                <Text>{Moment(action.createdAt).format('HH:mm')}</Text>
+                                                <Text>{action.name}</Text>
+                                                <Text>{action.price} {this.state.currencyIcon}</Text>
                                             </View>
                                         }
                                         rightElement='delete'
-                                        onRightElementPress={() => {this.deletePurchase(purchase.id)}}
+                                        onRightElementPress={() => {this.deleteAction(action.id)}}
                                         divider
                                     />
                                 ))
@@ -64,7 +64,7 @@ export class PurchasesList extends React.Component {
                         </ScrollView>
                     :
                         <View style={styles.alert}>
-                            <Text style={styles.text}>Сегодня Вы не совершали покупок</Text>
+                            <Text style={styles.text}>Сегодня Вы не совершали никаких действий</Text>
                         </View>
                 }
             </View>
