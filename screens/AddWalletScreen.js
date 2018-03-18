@@ -2,24 +2,24 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { AddHeader } from '../components/AddHeader';
-import { AddActionForm } from '../components/AddActionForm';
+import { AddWalletForm } from '../components/AddWalletForm';
 
-export class AddActionScreen extends React.Component {
+export class AddWalletScreen extends React.Component {
     submitForm() {
-        this.actionForm.addAction();
+        this.walletForm.addWallet();
     }
 
     render() {
         return (
             <View style={styles.layout}>
                 <AddHeader
-                    onClose={() => {this.props.navigation.navigate('ActionsList')}}
-                    headerText='Добавление действия'
+                    onClose={() => {this.props.navigation.navigate('WalletsList')}}
+                    headerText='Добавление кошелька'
                     onCreateActionPress={() => {this.submitForm()}}
                 />
-                <AddActionForm
-                    ref={form => {this.actionForm = form }}
-                    onSubmit={() => {this.props.navigation.navigate('ActionsList')}}
+                <AddWalletForm
+                    ref={form => {this.walletForm = form }}
+                    onSubmit={() => {this.props.navigation.navigate('WalletsList')}}
                 />
             </View>
         )

@@ -2,15 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 
-export class AddActionHeader extends React.Component {
+export class WalletsListHeader extends React.Component {
     render() {
         return (
             <Toolbar
-                leftElement='close'
-                centerElement='Добавление покупки'
-                rightElement='check'
-                onLeftElementPress={() => {this.props.onClose()}}
-                onRightElementPress={() => {this.props.onCreateActionPress()}}
+                leftElement='menu'
+                centerElement='Мои кошельки'
+                onLeftElementPress={() => {this.props.onMenuPress()}}
                 style={styles}
             />
         );

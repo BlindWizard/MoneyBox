@@ -70,14 +70,14 @@ export class AddActionForm extends React.Component {
                     label="Название"
                     onChangeText={(actionName) => {this.setState({actionName})}}
                     onSubmitEditing={() => {this.addAction()}}
-                    error={ this.state.errors.nameError }
+                    error={this.state.errors.nameError}
                 />
                 <TextField
                     label="Сумма"
                     keyboardType="numeric"
                     onChangeText={(actionPrice) => {this.setState({actionPrice})}}
                     onSubmitEditing={() => {this.addAction()}}
-                    error={ this.state.errors.priceError }
+                    error={this.state.errors.priceError}
                 />
                 <View style={styles.type}>
                     <View><Text>Расход</Text></View>

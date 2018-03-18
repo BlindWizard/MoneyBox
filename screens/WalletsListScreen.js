@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { DrawerMenu } from '../components/DrawerMenu';
-import { ActionsListHeader } from '../components/ActionsListHeader';
-import { ActionsList } from '../components/ActionsList';
+import { WalletsListHeader } from '../components/WalletsListHeader';
+import { WalletsList } from '../components/WalletsList';
 import { AddButton } from '../components/AddButton';
 
-export class ActionsListScreen extends React.Component {
+export class WalletsListScreen extends React.Component {
     render() {
         return (
             <DrawerMenu
@@ -14,10 +14,10 @@ export class ActionsListScreen extends React.Component {
                 content={
                     <View style={styles.layout}>
                         <View>
-                            <ActionsListHeader onMenuPress={() => {this.drawer.openDrawer()}} />
-                            <ActionsList/>
+                            <WalletsListHeader onMenuPress={() => {this.drawer.openDrawer()}}/>
+                            <WalletsList onPress={() => {this.props.navigation.navigate('ActionsList')}}/>
                         </View>
-                        <AddButton onPress={() => {this.props.navigation.navigate('AddAction')}} />
+                        <AddButton onPress={() => {this.props.navigation.navigate('AddWallet')}}/>
                     </View>
                 }
             />

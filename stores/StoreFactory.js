@@ -1,5 +1,6 @@
 import { ActionsStore } from './ActionsStore';
 import { CurrencyStore } from './CurrencyStore';
+import { WalletsStore } from './WalletsStore';
 
 export class StoreFactory {
     static getInstance(itemName) {
@@ -10,6 +11,8 @@ export class StoreFactory {
             case 'Currency':
                 return new CurrencyStore();
                 break;
+            case 'Wallet':
+                return new WalletsStore();
             default:
                 throw new Error('Модель ' + itemName + ' не существует!');
                 break;

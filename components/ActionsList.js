@@ -12,12 +12,15 @@ export class ActionsList extends React.Component {
         this.actionsStore = StoreFactory.getInstance('Action');
         this.currencyStore  = StoreFactory.getInstance('Currency');
         this.state = {
+            walletId: null,
             actions: [],
             currencyIcon: this.currencyStore.getDefault().icon,
         };
     }
 
     componentDidMount() {
+        this.setState({walletId: this.props.walletId});
+
         this.actionsStore.getAll().then((actions) => {
             this.setState({actions});
         });
